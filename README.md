@@ -5,7 +5,7 @@ Featured App powered by wiCard: <a href='http://booth.upon.one'>Booth App</a>
 
 Demo
 
-![Demo card](https://drive.google.com/file/d/1e69xsdQdm9q5-_YBIAJp1z95Ru4Qav9I)
+![Demo card](https://lh5.googleusercontent.com/n0P0u09gNQxlbpB8B9bbAvzV46zjF-yGIirZW4_L_zh4rPrjVt2IOBMwKH1DI49xcKox1R2B34wr1CRsAk7r=w1128-h987)
 
 How to use?
 ```
