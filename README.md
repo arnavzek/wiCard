@@ -5,7 +5,7 @@ Featured App powered by wiCard: <a href='http://booth.upon.one'>Booth App</a>
 
 Demo
 
-<img width='600px' src='https://ibb.co/yqkhnW9'>
+<img width='600px' src='https://i.ibb.co/M718DMv/rr.png'>
 
 
 
