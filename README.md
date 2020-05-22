@@ -12,7 +12,7 @@ Demo
 How to use?
 ```
 <head>
-<script type="module" src="./wiCard.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/itsarnavsingh/wicard/wiCard.js"></script>
 </head>
 
 <body>
