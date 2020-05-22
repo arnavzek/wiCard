@@ -1,15 +1,15 @@
-	import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
+import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
 
-	window.removeHTML = function(htm,type){
-		console.log(htm)
-		if(!type)type = ''
-		if(!htm)return ''
-		var regex = /(<([^>]+)>)/ig
-	 	return htm.replace(regex, type).trim();
-	}
+window.removeHTML = function(htm,type){
+	console.log(htm)
+	if(!type)type = ''
+	if(!htm)return ''
+	var regex = /(<([^>]+)>)/ig
+	return htm.replace(regex, type).trim();
+}
 
-    window.wikiAPI = function(keyword,srlimit,finalize,analysisBoolean){
+window.wikiAPI = function(keyword,srlimit){
       		return new Promise(resolve=>{
 
       			if(!srlimit) srlimit = 10
@@ -29,34 +29,6 @@
 				    format: "json"
 				};
 
-
-				if(finalize){
-					params.srsearch = finalize
-				}
-
-				let callback = resolve
-
-				if(analysisBoolean){
-
-					callback = function(data){
-						if(data.query.search.length === 0 ) return resolve(false) 
-						keyword = data.query.search[0].title
-
-
-
-						params = {
-						    action: "query",
-						    prop: "extracts",
-						    titles: encodeURIComponent(keyword),
-						    explaintext:'',
-						    format: "json",
-						    redirects: '1'
-						};
-
-						callback = resolve
-						runQuery()
-					}
-				}
 				
 				runQuery()
 				
@@ -83,7 +55,7 @@
 
 
 
-	    class wiCard extends LitElement {
+	class wiCard extends LitElement {
 
     	static get properties() {
 	        return {
@@ -92,7 +64,7 @@
 	          	image:String,
 	          	infobox:String
 	        }
-      }
+      	}
 
       	constructor(){
 	      	super()
