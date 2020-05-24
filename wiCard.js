@@ -1,15 +1,16 @@
-import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
+	import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
+	let wiCardUtil = {}
 
-window.removeHTML = function(htm,type){
-	console.log(htm)
-	if(!type)type = ''
-	if(!htm)return ''
-	var regex = /(<([^>]+)>)/ig
-	return htm.replace(regex, type).trim();
-}
+	wiCardUtil.removeHTML = function(htm,type){
+		console.log(htm)
+		if(!type)type = ''
+		if(!htm)return ''
+		var regex = /(<([^>]+)>)/ig
+	 	return htm.replace(regex, type).trim();
+	}
 
-window.wikiAPI = function(keyword,srlimit){
+    wiCardUtil.wikiAPI = function(keyword,srlimit){
       		return new Promise(resolve=>{
 
       			if(!srlimit) srlimit = 10
@@ -48,7 +49,7 @@ window.wikiAPI = function(keyword,srlimit){
 
 
 
-	window.capitalizeFirstLetter = function(string) {
+	wiCardUtil.capitalizeFirstLetter = function(string) {
 		if(!string) return ''
 	  return string.charAt(0).toUpperCase() + string.slice(1);
 	}
@@ -75,7 +76,7 @@ window.wikiAPI = function(keyword,srlimit){
 
 
       	firstUpdated(){
-	      	wikiAPI(this.title,3).then(newResponse=>{
+	      	wiCardUtil.wikiAPI(this.title,3).then(newResponse=>{
 
 	      		for(let index of newResponse.query.search){
 	      			if(index.snippet.indexOf('refer') === -1){
@@ -145,7 +146,7 @@ window.wikiAPI = function(keyword,srlimit){
 					if(td.length === 0 || th.length === 0) return false
 						console.log(td.length,th.length)
 
-					return html`<th>${removeHTML(th[0].innerHTML) }</th> <td>${parseUl(td[0].innerText)}</td>`
+					return html`<th>${wiCardUtil.removeHTML(th[0].innerHTML) }</th> <td>${parseUl(td[0].innerText)}</td>`
 				}
 
 				if(!infoBoxData){
@@ -257,7 +258,7 @@ window.wikiAPI = function(keyword,srlimit){
 
 	      			<span id=moveM style='${snippetWidth}'>
 		      			<b>
-		      				<medium id="anchor">${capitalizeFirstLetter(this.title)}</medium>
+		      				<medium id="anchor">${wiCardUtil.capitalizeFirstLetter(this.title)}</medium>
 		      			</b><br>
 		      			${this.snippet}
 	      			</span>
