@@ -40,7 +40,7 @@
 
 					fetch(parsedUrl)
 					    .then(function(response){return response.json();}).then((data)=>{
-					    	callback(data)
+					    	resolve(data)
 					    })
 				}
       		})
