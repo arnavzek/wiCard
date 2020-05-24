@@ -25,4 +25,9 @@ How to use?
 * Minor mis-spellings can be handled by wiCard 
 * Wikipedia page is previewed according to the title attribute provided
 
+#Attributes
+
+title: search keyword
+maxProp: maximum properties count of the specified wikipedia page / Default:5 / optional 
+
 Rate Limiting: NONE, It relies on wikipedia api that offers high limits and doesn't require api keys
