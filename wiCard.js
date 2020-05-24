@@ -1,14 +1,16 @@
-	import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
-	let wiCardUtil = {}
+	
+import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
-	wiCardUtil.removeHTML = function(htm,type){
-		// console.log(htm)
-		if(!type)type = ''
-		if(!htm)return ''
-		var regex = /(<([^>]+)>)/ig
-	 	return htm.replace(regex, type).trim();
-	}
+let wiCardUtil = {}
+
+wiCardUtil.removeHTML = function(htm,type){
+	// console.log(htm)
+	if(!type)type = ''
+	if(!htm)return ''
+	var regex = /(<([^>]+)>)/ig
+	return htm.replace(regex, type).trim();
+}
 
     wiCardUtil.wikiAPI = function(keyword,srlimit){
       		return new Promise(resolve=>{
@@ -63,7 +65,8 @@
 	        	title:String,
 	        	snippet:String,
 	          	image:String,
-	          	infobox:String
+	          	infobox:String,
+	          	maxProp:Number
 	        }
       	}
 
@@ -76,6 +79,9 @@
 
 
       	firstUpdated(){
+
+      		this.initiate = this.initiate.bind(this)
+      		if(!this.maxProp)this.maxProp = 5
 	      	wiCardUtil.wikiAPI(this.title,3).then(newResponse=>{
 
 	      		for(let index of newResponse.query.search){
@@ -158,11 +164,8 @@
 					let trTags = tmp.getElementsByTagName('tr')
 					let trArray = Array.prototype.slice.call(trTags)//converting node list ti array
 
-					if(trArray.length >6){
-						for(let i=0;i<=trArray.length-6;i++){
-							trArray.pop()
-						}
-					}
+					console.log(trArray.length )
+
 
 					if(trTags.length === 0){
 						parent.infobox = 'not found'
@@ -179,7 +182,7 @@
 						}else{
 							parent.infobox = html`<table>${
 
-								trArray.map(item=>html`<tr>${item}</tr>`)
+								trArray.slice(0, this.maxProp).map(item=>html`<tr>${item}</tr>`)
 
 							}</table>`
 
@@ -501,3 +504,6 @@
     }
 
     customElements.define('wi-card',wiCard)
+
+
+
