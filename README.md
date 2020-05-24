@@ -25,7 +25,7 @@ How to use?
 
 #Attributes
 
-title: search keyword
+title: search keyword<br>
 maxProp: maximum properties count of the specified wikipedia page / Default:5 / optional 
-
+<br><br>
 Rate Limiting: NONE, It relies on wikipedia api that offers high limits and doesn't require api keys
