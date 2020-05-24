@@ -4,9 +4,7 @@ Wikipedia rich information card, JS component library
 Featured App powered by wiCard: <a href='http://booth.upon.one'>Booth App</a>
 
 Demo
-
-<img width='600px' src='https://i.ibb.co/M718DMv/rr.png'>
-
+<img src="https://i.ibb.co/7gzjwYW/rr.png"  border="0">
 
 
 How to use?
