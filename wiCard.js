@@ -3,7 +3,7 @@
 	let wiCardUtil = {}
 
 	wiCardUtil.removeHTML = function(htm,type){
-		console.log(htm)
+		// console.log(htm)
 		if(!type)type = ''
 		if(!htm)return ''
 		var regex = /(<([^>]+)>)/ig
@@ -144,7 +144,7 @@
 
 
 					if(td.length === 0 || th.length === 0) return false
-						console.log(td.length,th.length)
+						// console.log(td.length,th.length)
 
 					return html`<th>${wiCardUtil.removeHTML(th[0].innerHTML) }</th> <td>${parseUl(td[0].innerText)}</td>`
 				}
@@ -157,6 +157,12 @@
 					// console.log(parent.title,infoBoxData)
 					let trTags = tmp.getElementsByTagName('tr')
 					let trArray = Array.prototype.slice.call(trTags)//converting node list ti array
+
+					if(trArray.length >6){
+						for(let i=0;i<=trArray.length-6;i++){
+							trArray.pop()
+						}
+					}
 
 					if(trTags.length === 0){
 						parent.infobox = 'not found'
@@ -301,7 +307,7 @@
 				    color: #444 !important;
 				    width: 100%;
     				margin-top: 2vw;
-    				max-height:20vw;
+    				
 				}
 
 				span#infobox tr{
