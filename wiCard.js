@@ -1,16 +1,14 @@
+	import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
 
-	
-import {LitElement, html, css} from 'https://unpkg.com/lit-element/lit-element.js?module';
+	let wiCardUtil = {}
 
-let wiCardUtil = {}
-
-wiCardUtil.removeHTML = function(htm,type){
-	// console.log(htm)
-	if(!type)type = ''
-	if(!htm)return ''
-	var regex = /(<([^>]+)>)/ig
-	return htm.replace(regex, type).trim();
-}
+	wiCardUtil.removeHTML = function(htm,type){
+		// console.log(htm)
+		if(!type)type = ''
+		if(!htm)return ''
+		var regex = /(<([^>]+)>)/ig
+	 	return htm.replace(regex, type).trim();
+	}
 
     wiCardUtil.wikiAPI = function(keyword,srlimit){
       		return new Promise(resolve=>{
@@ -127,17 +125,24 @@ wiCardUtil.removeHTML = function(htm,type){
 				}
 
 				function parseUl(ul){
-					let tempTrParser = document.createElement('ul')
+					console.log(ul)
+					// ul = wiCardUtil.removeHTML(ul)
+
+					let tempTrParser = document.createElement('div')
 					tempTrParser.innerHTML = ul
 
 					let li = Array.prototype.slice.call( tempTrParser.getElementsByTagName('li') )
 
-					if(li.length === 0) return ul
+					if(li.length === 0) return wiCardUtil.removeHTML(ul)
 
+					
 					let newWord = ''
 					for(let index of li){
+						console.log(index.innerText)
 						newWord += index.innerText+' '
 					}
+
+					return newWord
 				}
 
 				function parseTr(data){
@@ -152,7 +157,7 @@ wiCardUtil.removeHTML = function(htm,type){
 					if(td.length === 0 || th.length === 0) return false
 						// console.log(td.length,th.length)
 
-					return html`<th>${wiCardUtil.removeHTML(th[0].innerHTML) }</th> <td>${parseUl(td[0].innerText)}</td>`
+					return html`<th>${wiCardUtil.removeHTML(th[0].innerHTML) }</th> <td>${parseUl(td[0].innerHTML)}</td>`
 				}
 
 				if(!infoBoxData){
@@ -319,16 +324,17 @@ wiCardUtil.removeHTML = function(htm,type){
 				    padding-left: 0;
 				    /* margin-top: 0.1vw; */
 				    margin-left: -0.1vw;
-				    border-radius: 0.2vw;
+				    border-radius: 1vw;
 				    width: 90%;
-					margin: 0.5vw;
+					padding: 2% 5%;
 					background: yellowgreen;
 					background: #e0e0e026;
 
 					color: #333;
 					height: auto;
 					display: inline-block;
-					padding: 0.4vw 0;
+					margin:0.5vw 0;
+			
 				}
 
 				  
@@ -504,6 +510,4 @@ wiCardUtil.removeHTML = function(htm,type){
     }
 
     customElements.define('wi-card',wiCard)
-
-
 
