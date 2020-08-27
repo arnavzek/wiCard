@@ -1,7 +1,7 @@
 # wiCard
 Wikipedia rich information card, JS component library
 
-Featured App powered by wiCard: <a href='http://booth.upon.one'>Booth App</a>
+<a href='https://codepen.io/arnavsingh/pen/poyPbZL'>Codepen</a>
 
 Demo
 <img src="https://i.ibb.co/7gzjwYW/rr.png"  border="0">
