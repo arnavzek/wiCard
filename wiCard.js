@@ -414,7 +414,7 @@ class wiCard extends LitElement {
         margin-bottom: 0;
         border-radius: 0.2vw;
         border-radius: 2vw;
-        padding: 1vw;
+
         border: none;
         box-shadow: none;
         background: #f3f3f3;
@@ -427,12 +427,12 @@ class wiCard extends LitElement {
         padding: 1vw;
         border-radius: 15px;
         margin-bottom: 2vw;
-      }
-
-      div#wiCard p#output-R:hover {
         color: #222 !important;
         background-color: hsla(0, 0%, 100%, 1);
         box-shadow: 0vw 1vw 2vw 2px rgba(0, 0, 0, 0.31);
+      }
+
+      div#wiCard p#output-R:hover {
       }
 
       div#wiCard p#output-R:hover span#infobox {
@@ -458,8 +458,9 @@ class wiCard extends LitElement {
         height: auto;
         width: 30%;
         border-radius: 15px;
-        padding: 1vw;
+        padding: 0;
         padding-left: 0;
+        margin-top: 5px;
       }
 
       div#wiCard p#output-R #resultI {
